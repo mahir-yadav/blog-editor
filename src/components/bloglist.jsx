@@ -9,7 +9,7 @@ const BlogList = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:4000/api/blogs')
+        fetch('https://blog-editor-sw8v.onrender.com/api/blogs')
             .then(res => {
                 if (!res.ok) {
                     throw new Error('Failed to fetch blogs');

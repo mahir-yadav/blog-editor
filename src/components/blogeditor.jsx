@@ -17,7 +17,7 @@ function BlogEditor() {
     useEffect(() => {
         const fetchBlog = async () => {
             try {
-                const res = await fetch(`http://localhost:4000/api/blogs/${id}`);
+                const res = await fetch(`https://blog-editor-sw8v.onrender.com/api/blogs/${id}`);
                 const data = await res.json();
                 setTitle(data.title);
                 setContent(data.content);
@@ -44,13 +44,13 @@ function BlogEditor() {
 
             let response;
             if (id) {
-                response = await fetch(`http://localhost:4000/api/blogs/${id}`, {
+                response = await fetch(`https://blog-editor-sw8v.onrender.com/api/blogs/${id}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(blog),
                 });
             } else {
-                response = await fetch(`http://localhost:4000/api/blogs/draft`, {
+                response = await fetch(`https://blog-editor-sw8v.onrender.com/api/blogs/draft`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(blog),
@@ -81,13 +81,13 @@ function BlogEditor() {
 
             let response;
             if (id) {
-                response = await fetch(`http://localhost:4000/api/blogs/${id}`, {
+                response = await fetch(`https://blog-editor-sw8v.onrender.com/api/blogs/${id}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(blog),
                 });
             } else {
-                response = await fetch(`http://localhost:4000/api/blogs/publish`, {
+                response = await fetch(`https://blog-editor-sw8v.onrender.com/api/blogs/publish`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(blog),
