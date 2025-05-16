@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import './bloglist.css';
 const BlogList = () => {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -27,18 +27,18 @@ const BlogList = () => {
     if (error) return <p>Error: {error}</p>;
 
     return (
-        <div style={{ padding: '20px' }}>
+        <div className="blog-list-container">
             <h2>All Blogs</h2>
-            {blogs.length === 0 && <p>No blogs found.</p>}
-            <ul>
-                {blogs.map(blog => (
-                    <li key={blog._id}>
-                        <h3>{blog.title}</h3>
-                        <p>Status: {blog.status}</p>
-                        <p>{blog.content.substring(0, 100)}...</p>
-                    </li>
-                ))}
-            </ul>
+            {blogs.length === 0 && <p>No blogs available.</p>}
+            {blogs.map((blog) => (
+                <div key={blog._id} className="blog-item">
+                    <div className="blog-title">{blog.title}</div>
+                    <div className="blog-meta">
+                        Status: {blog.status} | Updated: {new Date(blog.updated_at).toLocaleDateString()}
+                    </div>
+                    <div className="blog-content">{blog.content}</div>
+                </div>
+            ))}
         </div>
     );
 };

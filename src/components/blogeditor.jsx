@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { saveDraft, publishBlog } from '../api';
-
+import './blogeditor.css';
 function BlogEditor() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -49,30 +49,23 @@ function BlogEditor() {
     };
 
     return (
-        <div style={{ padding: '20px' }}>
-            <h2>Write Your Blog</h2>
-            <input
-                type="text"
-                placeholder="Blog Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                style={{ width: '100%', marginBottom: '10px' }}
-            />
-            <input
-                type="text"
-                placeholder="Tags (comma-separated)"
-                value={tags}
-                onChange={(e) => setTags(e.target.value)}
-                style={{ width: '100%', marginBottom: '10px' }}
-            />
+
+        <div className="editor-container">
+            <h2>Write your Blog</h2>
+            <div className="input-group">
+                <label>Title</label>
+                <input type="text" placeholder="Enter title" />
+            </div>
+
+            <div className="input-group">
+                <label>Tags (comma separated)</label>
+                <input type="text" placeholder="e.g. tech, programming" />
+            </div>
             <ReactQuill value={content} onChange={setContent} />
-            <div style={{ marginTop: '10px' }}>
-                <button onClick={handleSaveDraft} disabled={saving}>
-                    {saving ? 'Saving...' : 'Save Draft'}
-                </button>
-                <button onClick={handlePublish} disabled={publishing} style={{ marginLeft: '10px' }}>
-                    {publishing ? 'Publishing...' : 'Publish'}
-                </button>
+
+            <div className="button-group">
+                <button>Save Draft</button>
+                <button>Publish</button>
             </div>
         </div>
     );
