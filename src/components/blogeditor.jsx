@@ -21,7 +21,6 @@ function BlogEditor() {
             };
             const saved = await saveDraft(blog);
             alert('Draft saved!');
-            // You can also update state if you want saved blog ID
         } catch (error) {
             alert('Failed to save draft');
             console.error(error);
@@ -40,7 +39,6 @@ function BlogEditor() {
             };
             const published = await publishBlog(blog);
             alert('Blog published!');
-            // Clear form or do something else
         } catch (error) {
             alert('Failed to publish blog');
             console.error(error);
@@ -52,20 +50,42 @@ function BlogEditor() {
 
         <div className="editor-container">
             <h2>Write your Blog</h2>
+
             <div className="input-group">
                 <label>Title</label>
-                <input type="text" placeholder="Enter title" />
+                <input
+                    type="text"
+                    placeholder="Enter title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                />
             </div>
 
             <div className="input-group">
                 <label>Tags (comma separated)</label>
-                <input type="text" placeholder="e.g. tech, programming" />
+                <input
+                    type="text"
+                    placeholder="e.g. tech, programming"
+                    value={tags}
+                    onChange={(e) => setTags(e.target.value)}
+                />
             </div>
+
             <ReactQuill value={content} onChange={setContent} />
 
             <div className="button-group">
-                <button>Save Draft</button>
-                <button>Publish</button>
+                <button
+                    type="button"
+                    onClick={() => handleSaveDraft({ title, tags, content })}
+                >
+                    Save Draft
+                </button>
+                <button
+                    type="button"
+                    onClick={() => handlePublish({ title, tags, content })}
+                >
+                    Publish
+                </button>
             </div>
         </div>
     );
