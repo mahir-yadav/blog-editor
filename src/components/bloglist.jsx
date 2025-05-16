@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './bloglist.css';
+import { Link } from 'react-router-dom';
+
+
 const BlogList = () => {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -37,6 +40,10 @@ const BlogList = () => {
                         Status: {blog.status} | Updated: {new Date(blog.updated_at).toLocaleDateString()}
                     </div>
                     <div className="blog-content">{blog.content}</div>
+
+                    <Link to={`/edit/${blog._id}`}>
+                        <button className='editbutton'>Edit</button>
+                    </Link>
                 </div>
             ))}
         </div>

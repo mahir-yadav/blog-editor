@@ -11,6 +11,8 @@ function App() {
       <Routes>
         <Route path="/" element={<EditorPage />} />
         <Route path="/blogs" element={<BlogListPage />} />
+        <Route path="/edit/:id" element={<EditorPage />} />
+
       </Routes>
     </BrowserRouter>
   );

@@ -23,6 +23,9 @@
     border-left: 6px solid #0077ff;
     box-shadow: 0 2px 6px rgb(0 0 0 / 0.05);
     transition: box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .blog-item:hover {
@@ -49,4 +52,15 @@
     max-height: 80px;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.editbutton {
+    background-color: #4caf50;
+    color: white;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }

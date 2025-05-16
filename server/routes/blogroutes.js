@@ -70,5 +70,24 @@ router.get('/:id', async (req, res) => {
         res.status(500).json({ error: 'Error fetching blog' });
     }
 });
+router.put('/:id', async (req, res) => {
+    const { title, content, tags, status } = req.body;
+    try {
+        const updatedBlog = await Blog.findByIdAndUpdate(
+            req.params.id,
+            {
+                title,
+                content,
+                tags,
+                status,
+                updated_at: new Date(),
+            },
+            { new: true }
+        );
+        res.json(updatedBlog);
+    } catch (err) {
+        res.status(500).json({ error: 'Error updating blog' });
+    }
+});
 
 module.exports = router;

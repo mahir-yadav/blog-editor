@@ -18,3 +18,17 @@ export const publishBlog = async (blog) => {
     });
     return response.json();
 };
+export const getBlogById = async (id) => {
+    const res = await fetch(`http://localhost:4000/api/blogs/${id}`);
+    return await res.json();
+};
+
+export const updateBlog = async (id, blog) => {
+    const res = await fetch(`http://localhost:4000/api/blogs/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(blog),
+    });
+    return await res.json();
+};
+
